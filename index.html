@@ -7,6 +7,16 @@
 			#mycanvas{
 				border: 1px solid red;
 			}
+			button{display: block;float: left;margin: 20px 10px 0px 10px ;height: 50px;width: 50px}
+			#yidong{
+				height: 500px;width: 500px;margin-top: 50px;
+			}
+			#first{
+				margin-left: 80px;
+			}
+			#fir{
+				width: 300px;height: 50px;
+			}
 		</style>
 	</head>
 	<body>
@@ -17,6 +27,15 @@
 		<audio id='eat' paused='paused'>
         <source src='eat.mp3' type="audio/mp3">
 		</audio>
+		<div id="yidong">
+			<div id="fir">
+				<button onclick="getMove(38)" id="first">↑</button>
+			</div>
+			<br />
+			<button onclick="getMove(37)">←</button>
+			<button onclick="getMove(40)">↓</button>
+			<button onclick="getMove(39)">→</button>
+		</div>
 	</body>
 	<script>
 		var eat=document.getElementById('eat');
@@ -57,6 +76,32 @@
 				ctx.clearRect(0,0,400,400);
 				ctx.drawImage(imgObj2,0,0,992,962,mox,moy,20,20);
 				ctx.drawImage(imgObj1,48*(t%4),s,48,54,xx,yy,32,36);
+			}
+		}
+		function getMove(x){
+			switch (x){
+				case 37:left++;
+						t=left;
+						s=54;
+						Move();
+					break;
+				case 38:up++;
+						t=up;
+						s=162;
+						Move();
+					break;
+				case 39:right++;
+						t=right;
+						s=108;
+						Move();
+					break;	
+				case 40:down++;
+						t=down;
+						s=0;
+						Move();
+					break;	
+				default:
+					break;
 			}
 		}
 		document.addEventListener('keydown',function(e){
