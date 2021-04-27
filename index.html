@@ -56,6 +56,9 @@
 		imgObj1.src='1.png';
 		var imgObj2=new Image();
 		imgObj2.src='2.jpg';
+		document.dblclick=function(e){
+			e.preventDefault();
+		}
 		one.onclick=function(e){
 			e.preventDefault();
 			getMove(38);
