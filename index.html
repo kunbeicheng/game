@@ -7,18 +7,15 @@
 			#mycanvas{
 				border: 1px solid red;
 			}
-			button{display: block;float: left;margin: 20px 10px 0px 10px;height: 50px;width: 50px}
+			button{display: block;float: left;height: 50px;width: 50px}
 			#yidong{
 				height: 200px;width: 400px;
 			}
-			#one{
-				margin-left: 80px;
+			#one,#thr{
+				margin-left: 50px;
 			}
-			#fir{
-				display: block;width: 400px;height: 80px;
-			}
-			#sec{
-				display: block;width: 400px;height: 80px;
+			.all{
+				display: block;width: 400px;height: 50px;
 			}
 		</style>
 	</head>
@@ -31,13 +28,16 @@
         <source src='eat.mp3' type="audio/mp3">
 		</audio>
 		<div id="yidong">
-			<div id="fir">
+			<div class="all">
 				<button id="one">↑</button>
 			</div>
-			<div id="sec">
+			<div class="all">
 				<button id="two">←</button>
-				<button id="thr">↓</button>
+				<button></button>
 				<button id="fou">→</button>
+			</div>
+			<div class="all">
+				<button id="thr">↓</button>
 			</div>
 		</div>
 	</body>
@@ -59,19 +59,19 @@
 		document.dblclick=function(e){
 			e.preventDefault();
 		}
-		one.onclick=function(e){
+		one.onmousemove=function(e){
 			e.preventDefault();
 			getMove(38);
 		}
-		two.onclick=function(e){
+		two.onmousemove=function(e){
 			e.preventDefault();
 			getMove(37);
 		}
-		thr.onclick=function(e){
+		thr.onmousemove=function(e){
 			e.preventDefault();
 			getMove(40);
 		}
-		fou.onclick=function(e){
+		fou.onmousemove=function(e){
 			e.preventDefault();
 			getMove(39);
 		}
