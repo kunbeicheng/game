@@ -7,15 +7,18 @@
 			#mycanvas{
 				border: 1px solid red;
 			}
-			button{display: block;float: left;margin: 20px 10px 0px 10px ;height: 50px;width: 50px}
+			button{display: block;float: left;margin: 20px 10px 0px 10px;height: 50px;width: 50px}
 			#yidong{
-				height: 500px;width: 500px;margin-top: 50px;
+				height: 200px;width: 400px;
 			}
 			#first{
 				margin-left: 80px;
 			}
 			#fir{
-				width: 300px;height: 50px;
+				display: block;width: 400px;height: 80px;
+			}
+			#sec{
+				display: block;width: 400px;height: 80px;
 			}
 		</style>
 	</head>
@@ -29,12 +32,13 @@
 		</audio>
 		<div id="yidong">
 			<div id="fir">
-				<button onclick="getMove(38)" id="first">↑</button>
+				<button onclick="event.preventDefault();getMove(38);" id="first">↑</button>
 			</div>
-			<br />
-			<button onclick="getMove(37)">←</button>
-			<button onclick="getMove(40)">↓</button>
-			<button onclick="getMove(39)">→</button>
+			<div id="sec">
+				<button onclick="event.preventDefault();getMove(37);">←</button>
+				<button onclick="event.preventDefault();getMove(40);">↓</button>
+				<button onclick="event.preventDefault();getMove(39);">→</button>
+			</div>
 		</div>
 	</body>
 	<script>
