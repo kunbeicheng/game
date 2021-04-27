@@ -11,7 +11,7 @@
 			#yidong{
 				height: 200px;width: 400px;
 			}
-			#first{
+			#one{
 				margin-left: 80px;
 			}
 			#fir{
@@ -32,16 +32,20 @@
 		</audio>
 		<div id="yidong">
 			<div id="fir">
-				<button onblur="event.preventDefault();getMove(38);" id="first">↑</button>
+				<button id="one">↑</button>
 			</div>
 			<div id="sec">
-				<button onblur="event.preventDefault();getMove(37);">←</button>
-				<button onblur="event.preventDefault();getMove(40);">↓</button>
-				<button onblur="event.preventDefault();getMove(39);">→</button>
+				<button id="two">←</button>
+				<button id="thr">↓</button>
+				<button id="fou">→</button>
 			</div>
 		</div>
 	</body>
 	<script>
+		var one=document.getElementById('one');
+		var two=document.getElementById('two');
+		var thr=document.getElementById('thr');
+		var fou=document.getElementById('fou');
 		var eat=document.getElementById('eat');
 		var mycanvas=document.getElementById('mycanvas');
 		var ctx=mycanvas.getContext('2d');
@@ -52,6 +56,22 @@
 		imgObj1.src='1.png';
 		var imgObj2=new Image();
 		imgObj2.src='2.jpg';
+		one.onclick=function(e){
+			e.preventDefault();
+			getMove(38);
+		}
+		two.onclick=function(e){
+			e.preventDefault();
+			getMove(37);
+		}
+		thr.onclick=function(e){
+			e.preventDefault();
+			getMove(40);
+		}
+		fou.onclick=function(e){
+			e.preventDefault();
+			getMove(39);
+		}
 		function Start(){
 			ctx.clearRect(0,0,400,400);
 			left=0;
