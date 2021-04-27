@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#mycanvas{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400" height="400"></canvas>
+		<audio autoplay="autoplay">
+        <source src='BGM.mp3' type="audio/mp3">
+		</audio>
+		<audio id='eat' paused='paused'>
+        <source src='eat.mp3' type="audio/mp3">
+		</audio>
+	</body>
+	<script>
+		var eat=document.getElementById('eat');
+		var mycanvas=document.getElementById('mycanvas');
+		var ctx=mycanvas.getContext('2d');
+		var x,y,t,s,xx,yy,code;
+		var left,right,up,down;
+		var mox,moy;
+		var imgObj1=new Image();
+		imgObj1.src='1.png';
+		var imgObj2=new Image();
+		imgObj2.src='2.jpg';
+		function Start(){
+			ctx.clearRect(0,0,400,400);
+			left=0;
+			right=0;
+			up=0;
+			down=0;
+			code=0;
+			x=parseInt(Math.random()*92)*4;
+			y=parseInt(Math.random()*91)*4;
+			ctx.drawImage(imgObj1,0,0,48,54,x,y,32,36);
+		}
+		function Move(){
+			xx=x+4*(right-left);
+			yy=y+4*(down-up);
+			if (xx<0||xx+32>400||yy<0||yy+36>400) {
+				alert('游戏结束，你的最终得分为'+code+',点击确定重新开始游戏！');
+				Start();
+				Mogu();
+			}else if(moy+9>yy&&moy-31<yy&&mox+12>xx&&mox-26<xx){
+				eat.play();
+				ctx.clearRect(0,0,400,400);
+				code+=10;
+				Mogu();	
+				ctx.drawImage(imgObj1,48*(t%4),s,48,54,xx,yy,32,36);		
+			}else{
+				ctx.clearRect(0,0,400,400);
+				ctx.drawImage(imgObj2,0,0,992,962,mox,moy,20,20);
+				ctx.drawImage(imgObj1,48*(t%4),s,48,54,xx,yy,32,36);
+			}
+		}
+		document.addEventListener('keydown',function(e){
+			switch (e.keyCode){
+				case 37:left++;
+						t=left;
+						s=54;
+						Move();
+					break;
+				case 38:up++;
+						t=up;
+						s=162;
+						Move();
+					break;
+				case 39:right++;
+						t=right;
+						s=108;
+						Move();
+					break;	
+				case 40:down++;
+						t=down;
+						s=0;
+						Move();
+					break;	
+				default:
+					break;
+			}
+		})
+		function Mogu(){
+			mox=parseInt(Math.random()*92)*4;
+			moy=parseInt(Math.random()*91)*4;
+			ctx.drawImage(imgObj2,0,0,992,962,mox,moy,20,20);
+		}
+		window.onload=function(){
+			Start();
+			Mogu();
+		}
+	</script>
+</html>
